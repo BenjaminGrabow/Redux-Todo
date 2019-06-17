@@ -16,17 +16,17 @@ export default (state = initialState, action) => {
           todo.completed = true
         } return todo
       });
-      return Object.assign({}, state, { todos: updateTodos });
+      return {todos: updateTodos};
 
     case 'DELETE_ITEMS':
       const updateTodoList = state.todos.filter(todo => !todo.completed);
-      return Object.assign({}, state, { todos: updateTodoList });
+      return {todos: updateTodoList};
 
     case 'SEARCH':
       const updateTheTodos = state.todos.filter(todo =>
         todo.todo.toLocaleLowerCase().startsWith(action.item.toLocaleLowerCase())
       );
-      return Object.assign({}, state, { todos: updateTheTodos });
+      return {todos: updateTheTodos};
 
     case 'SHOW_INPUT':
       const updateTheTodoList = state.todos.map(todo => {
@@ -34,7 +34,7 @@ export default (state = initialState, action) => {
           todo.input = true
         } return todo;
       });
-      return Object.assign({}, state, { todos: updateTheTodoList });
+      return {todos: updateTheTodoList};
 
       case 'UPDATE_ITEM':
         const update = state.todos.map(todo => {
@@ -45,7 +45,7 @@ export default (state = initialState, action) => {
           } 
           return todo;
         });
-        return Object.assign({}, state, {todos: update})
+        return { todos: update}
     default: return state;
   }
 }
