@@ -6,5 +6,5 @@ export function addText(text) {
                 completed: false,
                 id: new Date()
         }
-        return { type: ADD_TODO, payload: newTodo}
+        return { type: ADD_TODO, payload: newTodo }
 }

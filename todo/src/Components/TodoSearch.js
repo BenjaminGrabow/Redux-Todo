@@ -1,8 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { addText } from '../store/actions';
 
-class TodoInput extends React.Component {
+class TodoSearch extends React.Component {
         constructor(props) {
                 super(props);
                 this.state = {
@@ -16,34 +15,37 @@ class TodoInput extends React.Component {
                 });
         };
 
-        handleSubmit = (e) => {
-                e.preventDefault();
-
-                this.props.text(this.state.input);
+        search = () => {
+                this.props.searchItem(this.state.input);
 
                 this.setState({
-                        input: "",
+                        input: ''
                 });
         };
 
         render() {
                 return (
-                        <form onSubmit={this.handleSubmit}>
+                        <div>
                                 <input
                                         value={this.state.input}
                                         onChange={this.handleChange}
                                 ></input>
-                                <button
-                                        type="submit">
-                                        Add
+                                <button onClick={this.search}>
+                                        Search
                                         </button>
-                        </form>
+                        </div>
                 );
         }
-}
+};
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
         return {}
 };
 
-export default connect(mapStateToProps, { text: addText })(TodoInput);
+const mapDispatchToProps = dispatch => {
+        return {
+                searchItem: (input) => dispatch({ type: 'SEARCH', item: input })
+        }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(TodoSearch);

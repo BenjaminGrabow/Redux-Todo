@@ -3,17 +3,17 @@ import { connect } from 'react-redux';
 import '../App.css'
 
 const TodoList = (props) => {
-        return ( 
+        return (
                 <ul>
-                        {props.todos.map(todo => <li 
-                        className={todo.completed === false ? null : 'line-through'}
-                        onClick={() => props.changeToCompleted(todo.id)}>
-                        {todo.todo}
+                        {props.todos.map(todo => <li
+                                className={todo.completed === false ? null : 'line-through'}
+                                onClick={() => props.changeToCompleted(todo.id)}>
+                                {todo.todo}
                         </li>)}
                 </ul>
-         );
+        );
 }
- 
+
 const mapStateToProps = (state) => {
         return {
                 todos: state.todos
@@ -22,7 +22,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = dispatch => {
         return {
-                changeToCompleted: (id) => dispatch({type: 'CHANGE_TO_COMPLETED', id: id})
+                changeToCompleted: (id) => dispatch({ type: 'CHANGE_TO_COMPLETED', id: id })
         }
 }
 
