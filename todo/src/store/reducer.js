@@ -39,8 +39,11 @@ export default (state = initialState, action) => {
       case 'UPDATE_ITEM':
         const update = state.todos.map(todo => {
           if(todo.input === true) {
-            todo.todo = action.input
-          } return todo;
+            todo.todo = action.input;
+          } if(todo.input === true) {
+            todo.input = false;
+          } 
+          return todo;
         });
         return Object.assign({}, state, {todos: update})
     default: return state;
