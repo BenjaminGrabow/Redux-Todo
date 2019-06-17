@@ -17,7 +17,7 @@ class TodoList extends React.Component {
         };
 
         update = () => {
-                // this.props.updateItem(this.state.input);
+                this.props.updateItem(this.state.input);
 
                 this.setState({
                         input: ''
@@ -40,7 +40,7 @@ class TodoList extends React.Component {
                                                                 value={this.state.input}
                                                                 onChange={this.handleChange}
                                                         ></input>
-                                                        <button onClick={this.search}>
+                                                        <button onClick={this.update}>
                                                                 Update
                                         </button>
                                                 </div>
@@ -59,7 +59,8 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = dispatch => {
         return {
                 changeToCompleted: (id) => dispatch({ type: 'CHANGE_TO_COMPLETED', id: id }),
-                showInput: (id) => dispatch({ type: 'SHOW_INPUT', id: id})
+                showInput: (id) => dispatch({ type: 'SHOW_INPUT', id: id}),
+                updateItem: (input) => dispatch({ type: 'UPDATE_ITEM', input: input})
         }
 };
 

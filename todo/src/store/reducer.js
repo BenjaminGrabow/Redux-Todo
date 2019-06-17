@@ -28,13 +28,21 @@ export default (state = initialState, action) => {
       );
       return Object.assign({}, state, { todos: updateTheTodos });
 
-      case 'SHOW_INPUT':
-        const updateTheTodoList = state.todos.map(todo => {
-          if(todo.id === action.id){
-            todo.input = true
+    case 'SHOW_INPUT':
+      const updateTheTodoList = state.todos.map(todo => {
+        if (todo.id === action.id) {
+          todo.input = true
+        } return todo;
+      });
+      return Object.assign({}, state, { todos: updateTheTodoList });
+
+      case 'UPDATE_ITEM':
+        const update = state.todos.map(todo => {
+          if(todo.input === true) {
+            todo.todo = action.input
           } return todo;
         });
-        return Object.assign({}, state, {todos: updateTheTodoList})
+        return Object.assign({}, state, {todos: update})
     default: return state;
   }
 }
