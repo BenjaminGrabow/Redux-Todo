@@ -5,3 +5,7 @@
 .line-through {
   text-decoration: line-through;
 }
+
+.off {
+  display: none;
+}

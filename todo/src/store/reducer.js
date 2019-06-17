@@ -27,6 +27,14 @@ export default (state = initialState, action) => {
         todo.todo.toLocaleLowerCase().startsWith(action.item.toLocaleLowerCase())
       );
       return Object.assign({}, state, { todos: updateTheTodos });
+
+      case 'SHOW_INPUT':
+        const updateTheTodoList = state.todos.map(todo => {
+          if(todo.id === action.id){
+            todo.input = true
+          } return todo;
+        });
+        return Object.assign({}, state, {todos: updateTheTodoList})
     default: return state;
   }
 }

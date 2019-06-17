@@ -4,7 +4,8 @@ export function addText(text) {
         const newTodo = {
                 todo: text,
                 completed: false,
-                id: new Date()
+                id: new Date(),
+                input: false
         }
         return { type: ADD_TODO, payload: newTodo }
 }
