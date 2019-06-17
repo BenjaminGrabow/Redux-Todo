@@ -39,7 +39,7 @@ export default (state = initialState, action) => {
       return {todos: updateTheTodoList};
 
       case 'GO_BACK':
-        return {todos: state.oldtodo}
+        return {todos: state.oldtodo};
 
       case 'UPDATE_ITEM':
         const update = state.todos.map(todo => {
@@ -50,7 +50,7 @@ export default (state = initialState, action) => {
           } 
           return todo;
         });
-        return { todos: update}
+        return { todos: update};
     default: return state;
   }
 };
