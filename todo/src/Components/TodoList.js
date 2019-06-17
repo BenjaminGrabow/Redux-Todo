@@ -28,7 +28,7 @@ class TodoList extends React.Component {
                 return (
                         <ul>
                                 {this.props.todos.map(todo =>
-                                        <div>
+                                        <div key={todo.id}>
                                                 <li
                                                         className={todo.completed === false ? null : 'line-through'}
                                                         onClick={() => this.props.changeToCompleted(todo.id)}>
