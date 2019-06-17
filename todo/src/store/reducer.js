@@ -7,7 +7,8 @@ const initialState = {
 export default (state = initialState, action) => {
         switch(action.type){
                 case ADD_TODO:
-                        return {todos: [...state, action.payload]};
+                        const newTodo = [...state.todos, action.payload]
+                        return Object.assign({},state , {todos: newTodo});
                         default: return state;
         }
 }
