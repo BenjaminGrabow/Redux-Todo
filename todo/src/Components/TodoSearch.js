@@ -5,7 +5,7 @@ class TodoSearch extends React.Component {
         constructor(props) {
                 super(props);
                 this.state = {
-                        input: ''
+                        input: '',
                 }
         }
 
@@ -26,6 +26,7 @@ class TodoSearch extends React.Component {
         render() {
                 return (
                         <div>
+                                <button onClick={this.props.back}>Back</button>
                                 <input
                                         value={this.state.input}
                                         onChange={this.handleChange}
@@ -44,7 +45,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
         return {
-                searchItem: (input) => dispatch({ type: 'SEARCH', item: input })
+                searchItem: (input) => dispatch({ type: 'SEARCH', item: input }),
+                back: () => dispatch({type: 'GO_BACK'})
         }
 }
 

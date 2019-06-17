@@ -1,7 +1,8 @@
 import { ADD_TODO } from './actions';
 
 const initialState = {
-  todos: []
+  todos: [],
+  oldtodo: []
 };
 
 export default (state = initialState, action) => {
@@ -23,10 +24,11 @@ export default (state = initialState, action) => {
       return {todos: updateTodoList};
 
     case 'SEARCH':
+      const copyOfArray = state.todos;
       const updateTheTodos = state.todos.filter(todo =>
         todo.todo.toLocaleLowerCase().startsWith(action.item.toLocaleLowerCase())
       );
-      return {todos: updateTheTodos};
+      return {todos: updateTheTodos, oldtodo: copyOfArray};
 
     case 'SHOW_INPUT':
       const updateTheTodoList = state.todos.map(todo => {
@@ -35,6 +37,9 @@ export default (state = initialState, action) => {
         } return todo;
       });
       return {todos: updateTheTodoList};
+
+      case 'GO_BACK':
+        return {todos: state.oldtodo}
 
       case 'UPDATE_ITEM':
         const update = state.todos.map(todo => {
@@ -48,4 +53,4 @@ export default (state = initialState, action) => {
         return { todos: update}
     default: return state;
   }
-}
+};
