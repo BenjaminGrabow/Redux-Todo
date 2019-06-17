@@ -8,7 +8,7 @@ export default (state = initialState, action) => {
   switch (action.type) {
     case ADD_TODO:
       const newTodo = [...state.todos, action.payload];
-      return  {...state, todos: newTodo} ;
+      return  {todos: newTodo} ;
 
     case 'CHANGE_TO_COMPLETED':
       const updateTodos = state.todos.map(todo => {
