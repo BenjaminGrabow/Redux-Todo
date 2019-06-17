@@ -36,7 +36,8 @@ transition: all 2s ease-in;
 }
 
 .button {
-        width: 10%
+        width: 10%;
+        margin-bottom: 1.5rem;
 }
 
 `;
