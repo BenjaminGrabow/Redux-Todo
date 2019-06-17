@@ -1,6 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { addText } from '../store/actions';
+import styled from 'styled-components';
+
+const StyledContainer = styled.div`
+
+`;
 
 class TodoInput extends React.Component {
         constructor(props) {
@@ -28,6 +33,7 @@ class TodoInput extends React.Component {
 
         render() {
                 return (
+                        <StyledContainer>
                         <form onSubmit={this.handleSubmit}>
                                 <input
                                         value={this.state.input}
@@ -38,6 +44,7 @@ class TodoInput extends React.Component {
                                         Add
                                         </button>
                         </form>
+                        </StyledContainer>
                 );
         }
 }
