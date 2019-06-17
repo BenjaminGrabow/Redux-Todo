@@ -20,8 +20,8 @@ button {
 margin-top: 2rem;
 background-color: red;
 border-radius: 50%;
-width: 5%;
-height: 3rem;
+width: 10%;
+height: 5rem;
 box-shadow: 1rem .5rem .5rem black;
 }
 

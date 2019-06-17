@@ -14,6 +14,11 @@ const StyledDiv = styled.div`
 
 ul {
         list-style: none;
+
+        li {
+          height: 2rem;
+          font-size: 2rem;
+        }
 }
 
 .todo {
@@ -21,6 +26,7 @@ background: #c31432;  /* fallback for old browsers */
 background: -webkit-linear-gradient(to right, #240b36, #c31432);  /* Chrome 10-25, Safari 5.1-6 */
 background: linear-gradient(to right, #240b36, #c31432); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 display: flex;
+flex-direction: column;
 color: white;
 width: 50%;
 margin: 1rem auto;
@@ -35,9 +41,18 @@ transition: all 2s ease-in;
 }
 }
 
+.row {
+  display: flex;
+  text-align: left;
+  width: 100%;
+  justify-content: space-around;
+  height: 4rem;
+}
+
 .button {
-        width: 10%;
-        margin-bottom: 1.5rem;
+        width: 25%;
+        margin: 0;
+        height: 3.5rem;
 }
 
 `;
@@ -68,11 +83,15 @@ class TodoList extends React.Component {
                 return (
                         <StyledDiv>
                         <ul>
-                                {this.props.todos.map(todo =>
+                                {this.props.todos.map((todo, index) =>
                                         <div  
                                         key={todo.id}>
                                                 <div 
                                                  className="todo">
+                                                   <div>
+                                                     <h1>{`DAY${++index}`}</h1>
+                                                   </div>
+                                                   <div className="row">
                                                 <li
                                                         className={todo.completed === false ? null : 'line-through'}
                                                         onClick={() => this.props.changeToCompleted(todo.id)}>
@@ -83,6 +102,7 @@ class TodoList extends React.Component {
                                                 onClick={() => this.props.showInput(todo.id)}>
                                                         Update
                                                         </button>
+                                                        </div>
                                                 </div>
                                                 <div className={todo.input === false ? 'off' : null}>
                                                         <input
@@ -115,12 +135,3 @@ const mapDispatchToProps = dispatch => {
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(TodoList);
-
-
-
-
-
-
-
-
-
