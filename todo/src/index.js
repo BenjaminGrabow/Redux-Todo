@@ -11,7 +11,7 @@ import { BrowserRouter as Router } from 'react-router-dom';
 const combineReducer = combineReducers({
         reduce1: reducer1,
         reduce2: reducer2
-})
+});
 
 const store = createStore(combineReducer);
 

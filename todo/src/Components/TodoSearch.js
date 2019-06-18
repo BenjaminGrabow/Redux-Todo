@@ -38,12 +38,16 @@ class TodoSearch extends React.Component {
         render() {
                 return (
                         <div>
-                                <button onClick={this.goBack}>Back</button>
+                                <button
+                                 onClick={this.goBack}>
+                                         Back
+                                         </button>
                                 <input
                                         value={this.state.input}
                                         onChange={this.handleChange}
                                 ></input>
-                                <button onClick={this.search}>
+                                <button
+                                 onClick={this.search}>
                                         Search
                                         </button>
                         </div>

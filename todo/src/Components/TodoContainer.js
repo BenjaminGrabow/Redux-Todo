@@ -3,9 +3,7 @@ import TodoInput from './TodoInput';
 import TodoList from './TodoList';
 import { connect } from 'react-redux';
 import TodoSearch from './TodoSearch';
-// import OneTodo from './OneTodo';
 import styled from 'styled-components';
-// import { NavLink, Route} from 'react-router-dom';´
 import * as actionDispatcher from '../store/actions';
 
 const StyledDiv = styled.div`
@@ -64,41 +62,45 @@ class TodoContainer extends React.Component {
     this.state = {}
   }
 
-  // componentDidMount = () => {
-  //   const texts = ['Todo-List', 'Day-Planner', 'Notices'];
-  //   let count = 0;
-  //   let index = 0;
-  //   let currentText = "";
-  //   let letter = "";
+  componentDidUpdate = () => {
+    if (window.location.href === 'http://localhost:3001/') {
+      const texts = ['Todo-List', 'Day-Planner', 'Notices'];
+      let count = 0;
+      let index = 0;
+      let currentText = "";
+      let letter = "";
 
-  //   (function type() {
+      (function type() {
 
-  //     if (count === texts.length) {
-  //       count = 0;
-  //     }
+        if (count === texts.length) {
+          count = 0;
+        }
 
-  //     currentText = texts[count];
-  //     letter = currentText.slice(0, ++index);
+        currentText = texts[count];
+        letter = currentText.slice(0, ++index);
 
-  //     document.querySelector('.typing').textContent = letter;
-  //     if (letter.length === currentText.length) {
-  //       count++;
-  //       index = 0;
-  //     }
-  //     setTimeout(type, 400);
-  //   }());
-  // };
+        document.querySelector('.typing').textContent = letter;
+        if (letter.length === currentText.length) {
+          count++;
+          index = 0;
+        }
+        setTimeout(type, 400);
+      }());
+    }
+    console.log(window.location.href)
+  };
 
   render() {
     return (
       <StyledDiv>
-        {/* <NavLink to="/" >All Todos</NavLink>
-        <Route exact path="/" component={TodoList} ></Route> */}
         <TodoSearch />
         <h1>Make your own</h1>
         <h1 className="typing">List </h1>
-        <TodoList/>
-        <button onClick={this.props.deleteItems} >Delete</button>
+        <TodoList />
+        <button
+          onClick={this.props.deleteItems} >
+          Delete
+           </button>
         <TodoInput />
       </StyledDiv>
     );
@@ -108,7 +110,7 @@ class TodoContainer extends React.Component {
 
 const mapStateToProps = state => {
   return {
-     todolist: state.reduce1
+    todolist: state.reduce1
   }
 };
 

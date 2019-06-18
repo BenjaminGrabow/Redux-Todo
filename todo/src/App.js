@@ -9,6 +9,7 @@ const App = (props) => {
     <div>
       {props.todos.map(todo =>
         <NavLink
+        key={todo.id}
           to={`/${todo.day}`} >
           {todo.day}
         </NavLink>
@@ -22,6 +23,7 @@ const App = (props) => {
         component={TodoContainer} />
       {props.todos.map(todo =>
         <Route
+        key={todo.id}
           path={`/${todo.day}`}
           render={() =>
             <OneTodo
@@ -38,6 +40,6 @@ const mapStateToProps = state => {
   return {
     todos: state.reduce1.todos
   }
-}
+};
 
 export default connect(mapStateToProps)(App);
