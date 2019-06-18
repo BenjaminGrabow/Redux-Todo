@@ -38,11 +38,11 @@ justify-content: space-around;
 border-radius: 3rem;
 align-items: center;
 box-shadow: 1rem .5rem .5rem black;
-transition: all 1s ease-in;
+/* transition: all 1s ease-in; */
 
-&:hover{
+/* &:hover{
         transform: rotate(5deg);
-}
+} */
 }
 
 .row {
@@ -92,7 +92,7 @@ class TodoList extends React.Component {
       <StyledDiv>
         <ul>
           <Slider
-          className="slider">
+            className="slider">
             {this.props.todos.map((todo, index) =>
               <div
                 key={todo.id}>

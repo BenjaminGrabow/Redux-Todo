@@ -12,22 +12,29 @@ nav {
   justify-content: space-around;
 }
 
+a {
+  text-decoration: none;
+  font-size: 1.5rem;
+  color: black;
+  font-weight: bold;
+}
+
 `;
 
 const App = (props) => {
   return (
     <StyledDiv>
       <nav>
-      {props.todos.map(todo =>
+        {props.todos.map(todo =>
+          <NavLink
+            key={todo.id}
+            to={`/${todo.day}`} >
+            {todo.day}
+          </NavLink>
+        )}
         <NavLink
-        key={todo.id}
-          to={`/${todo.day}`} >
-          {todo.day}
-        </NavLink>
-      )}
-      <NavLink
-        to="/" >
-        All Todos
+          to="/" >
+          All Todos
       </NavLink>
       </nav>
       <Route
@@ -35,7 +42,7 @@ const App = (props) => {
         component={TodoContainer} />
       {props.todos.map(todo =>
         <Route
-        key={todo.id}
+          key={todo.id}
           path={`/${todo.day}`}
           render={() =>
             <OneTodo
