@@ -2,6 +2,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
 import * as actionDispatchers from '../store/actions';
+import Slider from 'react-animated-slider';
+import 'react-animated-slider/build/horizontal.css';
 
 const StyledDiv = styled.div`
 
@@ -82,39 +84,41 @@ class TodoList extends React.Component {
         render() {
                 return (
                         <StyledDiv>
-                        <ul>
-                                {this.props.todos.map((todo, index) =>
-                                        <div  
-                                        key={todo.id}>
-                                                <div 
-                                                 className="todo">
-                                                   <div>
-                                                     <h1>{todo.day}</h1>
-                                                   </div>
-                                                   <div className="row">
-                                                <li
-                                                        className={todo.completed === false ? null : 'line-through'}
-                                                        onClick={() => this.props.changeToCompleted(todo.id)}>
-                                                        {todo.todo}
-                                                </li>
-                                                <button
-                                                className="button" 
-                                                onClick={() => this.props.showInput(todo.id)}>
-                                                        Update
+                                <ul>
+                                        <Slider>
+                                                {this.props.todos.map((todo, index) =>
+                                                        <div
+                                                                key={todo.id}>
+                                                                <div
+                                                                        className="todo">
+                                                                        <div>
+                                                                                <h1>{todo.day}</h1>
+                                                                        </div>
+                                                                        <div className="row">
+                                                                                <li
+                                                                                        className={todo.completed === false ? null : 'line-through'}
+                                                                                        onClick={() => this.props.changeToCompleted(todo.id)}>
+                                                                                        {todo.todo}
+                                                                                </li>
+                                                                                <button
+                                                                                        className="button"
+                                                                                        onClick={() => this.props.showInput(todo.id)}>
+                                                                                        Update
                                                         </button>
-                                                        </div>
-                                                </div>
-                                                <div className={todo.input === false ? 'off' : null}>
-                                                        <input
-                                                                value={this.state.input}
-                                                                onChange={this.handleChange}
-                                                        ></input>
-                                                        <button onClick={this.update}>
-                                                                Update
+                                                                        </div>
+                                                                </div>
+                                                                <div className={todo.input === false ? 'off' : null}>
+                                                                        <input
+                                                                                value={this.state.input}
+                                                                                onChange={this.handleChange}
+                                                                        ></input>
+                                                                        <button onClick={this.update}>
+                                                                                Update
                                         </button>
-                                                </div>
-                                        </div>)}
-                        </ul>
+                                                                </div>
+                                                        </div>)}
+                                        </Slider>
+                                </ul>
                         </StyledDiv>
                 );
         }
