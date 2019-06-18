@@ -1,5 +1,5 @@
 import React from 'react';
-import { connect } from 'react-redux';
+// import { connect } from 'react-redux';
 import styled from 'styled-components';
 
 const StyledDiv = styled.div`
@@ -83,11 +83,11 @@ class OneTodo extends React.Component {
 
 
 
-const mapStateToProps = (state) => {
-        return {
-                todos: state.todos
-        }
-};
+// const mapStateToProps = (state) => {
+//         return {
+//                 todos: state.todos
+//         }
+// };
 
 
-export default connect(mapStateToProps)(OneTodo);
+export default OneTodo;
