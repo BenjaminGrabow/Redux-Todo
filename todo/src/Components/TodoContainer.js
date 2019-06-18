@@ -11,19 +11,18 @@ text-align: center;
 background: #bdc3c7;  /* fallback for old browsers */
 background: -webkit-linear-gradient(to right, #2c3e50, #bdc3c7);  /* Chrome 10-25, Safari 5.1-6 */
 background: linear-gradient(to right, #2c3e50, #bdc3c7); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-height: 200%;
 border-radius: 30%;
 
 h1 {
   color: white;
+  font-size: 2rem;
 }
 
 button {
-margin-top: 2rem;
 background-color: red;
 border-radius: 50%;
 width: 10%;
-height: 5rem;
+height: 3rem;
 box-shadow: 1rem .5rem .5rem black;
 }
 
@@ -34,9 +33,10 @@ input {
     height: 2.5rem;   
 }
 
-.typing {
+/* .typing {
         position: relative;
-}
+        
+} */
 
 @keyframes blink {
         0%{
@@ -50,7 +50,7 @@ input {
         content: "";
         position: absolute;
         width: .1rem;
-        height: 100%;
+        height: 3rem;
         border-right: .2rem solid white;
         animation: blink 0.5s infinite ease;
 }
@@ -62,8 +62,7 @@ class TodoContainer extends React.Component {
     this.state = {}
   }
 
-  componentDidUpdate = () => {
-    if (window.location.href === 'http://localhost:3001/') {
+  componentDidMount = () => {
       const texts = ['Todo-List', 'Day-Planner', 'Notices'];
       let count = 0;
       let index = 0;
@@ -86,8 +85,6 @@ class TodoContainer extends React.Component {
         }
         setTimeout(type, 400);
       }());
-    }
-    console.log(window.location.href)
   };
 
   render() {
