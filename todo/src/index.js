@@ -5,20 +5,20 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 import { createStore, combineReducers } from 'redux';
 import { Provider } from 'react-redux';
-import { reducer1 } from './store/reducer';
+import { reducer1, reducer2 } from './store/reducer';
 import { BrowserRouter as Router } from 'react-router-dom';
 
-// const combineReducer = combineReducers({
-//         reduce1: reducer1,
-//         reduce2: reducer2
-// })
+const combineReducer = combineReducers({
+        reduce1: reducer1,
+        reduce2: reducer2
+})
 
-const store = createStore(reducer1);
+const store = createStore(combineReducer);
 
 ReactDOM.render(<Router>
         <Provider store={store} >
-        <App />
-</Provider>
+                <App />
+        </Provider>
 </Router>, document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change

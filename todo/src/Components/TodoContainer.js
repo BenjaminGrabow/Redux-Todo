@@ -108,7 +108,7 @@ class TodoContainer extends React.Component {
 
 const mapStateToProps = state => {
   return {
-     todolist: state.todos
+     todolist: state.reduce1
   }
 };
 

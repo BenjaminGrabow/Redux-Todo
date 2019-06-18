@@ -7,6 +7,7 @@ class TodoSearch extends React.Component {
                 super(props);
                 this.state = {
                         input: '',
+                        copyOfArray: ''
                 }
         }
 
@@ -17,17 +18,27 @@ class TodoSearch extends React.Component {
         };
 
         search = () => {
-                this.props.searchItem(this.state.input);
+                this.setState({
+                        input: '',
+                        copyOfArray: this.props.copy
+                });
+
+                this.props.searchItem(this.state.input, this.state.copyOfArray);
+
+        };
+
+        goBack = () => {
+                this.props.back(this.state.copyOfArray);
 
                 this.setState({
-                        input: ''
-                });
+                        copyOfArray: ''
+                })
         };
 
         render() {
                 return (
                         <div>
-                                <button onClick={this.props.back}>Back</button>
+                                <button onClick={this.goBack}>Back</button>
                                 <input
                                         value={this.state.input}
                                         onChange={this.handleChange}
@@ -41,7 +52,9 @@ class TodoSearch extends React.Component {
 };
 
 const mapStateToProps = state => {
-        return {}
+        return {
+                copy: state.reduce1.todos
+        }
 };
 
 

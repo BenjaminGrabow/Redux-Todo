@@ -122,7 +122,7 @@ class TodoList extends React.Component {
 
 const mapStateToProps = (state) => {
         return {
-                todos: state.todos
+                todos: state.reduce1.todos
         }
 };
 

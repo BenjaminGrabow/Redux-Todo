@@ -6,25 +6,25 @@ export const UPDATE_ITEM = 'UPDATE_ITEM';
 export const SHOW_INPUT = 'SHOW_INPUT';
 export const DELETE_ITEMS = 'DELETE_ITEMS';
 export const SEARCH = 'SEARCH';
-export const GO_BACK ='GO_BACK';
+export const GO_BACK = 'GO_BACK';
 
 export function text(task, day) {
-        const newTodo = {
-                todo: task,
-                day: day,
-                completed: false,
-                id: uuid(),
-                input: false
-        }
-        return { type: ADD_TODO, payload: newTodo }
+  const newTodo = {
+    todo: task,
+    day: day,
+    completed: false,
+    id: uuid(),
+    input: false
+  }
+  return { type: ADD_TODO, payload: newTodo }
 }
 
 export function changeToCompleted(id) {
-  return { type: CHANGE_TO_COMPLETED , id: id }
+  return { type: CHANGE_TO_COMPLETED, id: id }
 }
 
 export function updateItem(input) {
-  return { type: UPDATE_ITEM , input: input}
+  return { type: UPDATE_ITEM, input: input }
 }
 
 export function showInput(id) {
@@ -35,10 +35,10 @@ export function deleteItems() {
   return { type: DELETE_ITEMS }
 }
 
-export function searchItem(input) {
-  return { type: SEARCH, item: input }
+export function searchItem(input, copyOfArray) {
+  return { type: SEARCH, item: input, copyOfArray: copyOfArray }
 }
 
-export function back() {
-  return {type: GO_BACK}
+export function back(oldArray) {
+  return { type: GO_BACK, oldArray: oldArray }
 }
