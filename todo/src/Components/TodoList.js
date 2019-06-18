@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
+import * as actionDispatchers from '../store/actions';
 
 const StyledDiv = styled.div`
 
@@ -54,7 +55,6 @@ transition: all 2s ease-in;
         margin: 0;
         height: 3.5rem;
 }
-
 `;
 
 class TodoList extends React.Component {
@@ -89,7 +89,7 @@ class TodoList extends React.Component {
                                                 <div 
                                                  className="todo">
                                                    <div>
-                                                     <h1>{`DAY${++index}`}</h1>
+                                                     <h1>{todo.day}</h1>
                                                    </div>
                                                    <div className="row">
                                                 <li
@@ -126,12 +126,5 @@ const mapStateToProps = (state) => {
         }
 };
 
-const mapDispatchToProps = dispatch => {
-        return {
-                changeToCompleted: (id) => dispatch({ type: 'CHANGE_TO_COMPLETED', id: id }),
-                showInput: (id) => dispatch({ type: 'SHOW_INPUT', id: id}),
-                updateItem: (input) => dispatch({ type: 'UPDATE_ITEM', input: input})
-        }
-};
 
-export default connect(mapStateToProps, mapDispatchToProps)(TodoList);
+export default connect(mapStateToProps, actionDispatchers)(TodoList);

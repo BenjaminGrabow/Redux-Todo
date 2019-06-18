@@ -3,14 +3,16 @@ import TodoInput from './TodoInput';
 import TodoList from './TodoList';
 import { connect } from 'react-redux';
 import TodoSearch from './TodoSearch';
+// import OneTodo from './OneTodo';
 import styled from 'styled-components';
+// import { NavLink, Route} from 'react-router-dom';
 
 const StyledDiv = styled.div`
 text-align: center;
 background: #bdc3c7;  /* fallback for old browsers */
 background: -webkit-linear-gradient(to right, #2c3e50, #bdc3c7);  /* Chrome 10-25, Safari 5.1-6 */
 background: linear-gradient(to right, #2c3e50, #bdc3c7); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-height: 100%;
+height: 200%;
 
 h1 {
   color: white;
@@ -88,10 +90,12 @@ class TodoContainer extends React.Component {
   render() {
     return (
       <StyledDiv>
+        {/* <NavLink to="/" >All Todos</NavLink>
+        <Route exact path="/" component={TodoList} ></Route> */}
         <TodoSearch />
         <h1>Make your own</h1>
         <h1 className="typing">List </h1>
-        <TodoList />
+        <TodoList/>
         <button onClick={this.props.deleteItems} >Delete</button>
         <TodoInput />
       </StyledDiv>
@@ -101,7 +105,9 @@ class TodoContainer extends React.Component {
 
 
 const mapStateToProps = state => {
-  return {}
+  return {
+     todolist: state.todos
+  }
 };
 
 const mapDispatchToProps = dispatch => {

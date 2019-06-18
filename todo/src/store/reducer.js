@@ -1,4 +1,4 @@
-import { ADD_TODO } from './actions';
+import * as actions from './actions';
 
 const initialState = {
   todos: [],
@@ -7,11 +7,11 @@ const initialState = {
 
 export default (state = initialState, action) => {
   switch (action.type) {
-    case ADD_TODO:
+    case actions.ADD_TODO:
       const newTodo = [...state.todos, action.payload];
       return  {todos: newTodo} ;
 
-    case 'CHANGE_TO_COMPLETED':
+    case actions.CHANGE_TO_COMPLETED:
       const updateTodos = state.todos.map(todo => {
         if (todo.id === action.id) {
           todo.completed = true
@@ -19,18 +19,19 @@ export default (state = initialState, action) => {
       });
       return {todos: updateTodos};
 
-    case 'DELETE_ITEMS':
+    case actions.DELETE_ITEMS:
       const updateTodoList = state.todos.filter(todo => !todo.completed);
       return {todos: updateTodoList};
 
-    case 'SEARCH':
+    case actions.SEARCH:
       const copyOfArray = state.todos;
       const updateTheTodos = state.todos.filter(todo =>
         todo.todo.toLocaleLowerCase().startsWith(action.item.toLocaleLowerCase())
+        /// Include()
       );
       return {todos: updateTheTodos, oldtodo: copyOfArray};
 
-    case 'SHOW_INPUT':
+    case actions.SHOW_INPUT:
       const updateTheTodoList = state.todos.map(todo => {
         if (todo.id === action.id) {
           todo.input = true
@@ -38,14 +39,13 @@ export default (state = initialState, action) => {
       });
       return {todos: updateTheTodoList};
 
-      case 'GO_BACK':
+      case actions.GO_BACK:
         return {todos: state.oldtodo};
 
-      case 'UPDATE_ITEM':
+      case actions.UPDATE_ITEM:
         const update = state.todos.map(todo => {
           if(todo.input === true) {
             todo.todo = action.input;
-          } if(todo.input === true) {
             todo.input = false;
           } 
           return todo;

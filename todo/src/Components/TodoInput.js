@@ -11,39 +11,49 @@ class TodoInput extends React.Component {
         constructor(props) {
                 super(props);
                 this.state = {
-                        input: ''
+                        inputTask: '',
+                        inputDay: ''
                 }
         }
 
         handleChange = (e) => {
                 this.setState({
-                        input: e.target.value
+                       [e.target.name]: e.target.value
                 });
         };
 
         handleSubmit = (e) => {
                 e.preventDefault();
 
-                this.props.text(this.state.input);
+                this.props.text(this.state.inputTask, this.state.inputDay);
 
                 this.setState({
-                        input: "",
+                        inputTask: "",
+                        inputDay: ""
                 });
         };
 
         render() {
                 return (
                         <StyledContainer>
-                        <form onSubmit={this.handleSubmit}>
-                                <input
-                                        value={this.state.input}
-                                        onChange={this.handleChange}
-                                ></input>
-                                <button
-                                        type="submit">
-                                        Add
+                                <form onSubmit={this.handleSubmit}>
+                                        <input
+                                                name="inputTask"
+                                                value={this.state.inputTask}
+                                                onChange={this.handleChange}
+                                                placeholder="add your task"
+                                        ></input>
+                                        <input
+                                                name="inputDay"
+                                                value={this.state.inputDay}
+                                                onChange={this.handleChange}
+                                                placeholder="add your day"
+                                        ></input>
+                                        <button
+                                                type="submit">
+                                                Add
                                         </button>
-                        </form>
+                                </form>
                         </StyledContainer>
                 );
         }
