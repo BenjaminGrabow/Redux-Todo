@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import * as actionDispatchers from '../store/actions';
 
 class TodoSearch extends React.Component {
         constructor(props) {
@@ -43,11 +44,5 @@ const mapStateToProps = state => {
         return {}
 };
 
-const mapDispatchToProps = dispatch => {
-        return {
-                searchItem: (input) => dispatch({ type: 'SEARCH', item: input }),
-                back: () => dispatch({type: 'GO_BACK'})
-        }
-}
 
-export default connect(mapStateToProps, mapDispatchToProps)(TodoSearch);
+export default connect(mapStateToProps, actionDispatchers)(TodoSearch);

@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { addText } from '../store/actions';
+import * as actionDispatcher from '../store/actions';
 import styled from 'styled-components';
 
 const StyledContainer = styled.div`
@@ -63,4 +63,4 @@ const mapStateToProps = (state) => {
         return {}
 };
 
-export default connect(mapStateToProps, { text: addText })(TodoInput);
+export default connect(mapStateToProps, actionDispatcher)(TodoInput);

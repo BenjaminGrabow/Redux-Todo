@@ -1,6 +1,5 @@
 import uuid from 'uuid';
 
-
 export const ADD_TODO = 'ADD_TODO';
 export const CHANGE_TO_COMPLETED = 'CHANGE_TO_COMPLETED';
 export const UPDATE_ITEM = 'UPDATE_ITEM';
@@ -9,7 +8,7 @@ export const DELETE_ITEMS = 'DELETE_ITEMS';
 export const SEARCH = 'SEARCH';
 export const GO_BACK ='GO_BACK';
 
-export function addText(task, day) {
+export function text(task, day) {
         const newTodo = {
                 todo: task,
                 day: day,
@@ -30,4 +29,16 @@ export function updateItem(input) {
 
 export function showInput(id) {
   return { type: SHOW_INPUT, id: id }
+}
+
+export function deleteItems() {
+  return { type: DELETE_ITEMS }
+}
+
+export function searchItem(input) {
+  return { type: SEARCH, item: input }
+}
+
+export function back() {
+  return {type: GO_BACK}
 }

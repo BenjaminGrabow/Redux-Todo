@@ -5,7 +5,8 @@ import { connect } from 'react-redux';
 import TodoSearch from './TodoSearch';
 // import OneTodo from './OneTodo';
 import styled from 'styled-components';
-// import { NavLink, Route} from 'react-router-dom';
+// import { NavLink, Route} from 'react-router-dom';´
+import * as actionDispatcher from '../store/actions';
 
 const StyledDiv = styled.div`
 text-align: center;
@@ -110,11 +111,4 @@ const mapStateToProps = state => {
   }
 };
 
-const mapDispatchToProps = dispatch => {
-  return {
-    deleteItems: () => dispatch({ type: 'DELETE_ITEMS' })
-  }
-};
-
-
-export default connect(mapStateToProps, mapDispatchToProps)(TodoContainer);
+export default connect(mapStateToProps, actionDispatcher)(TodoContainer);
